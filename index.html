@@ -13,15 +13,18 @@
 
     <!-- script -->
     <script language="JavaScript">
-        function check(form)
+        function check()
         {
-            if(form.emailid.value == "admin" && form.pass.value == "admin")
+            var username = document.getElementById("emailid").value;
+            var password = document.getElementById("pass").value;
+            if(username == "admin" && password == "admin")
             {
-                window.open('dashboard.html')
+                return true;
             }
             else
             {
                 alert("The email and password are incorrect")
+                return false
             }
         }
     </script>
@@ -33,15 +36,15 @@
     <h1 style="text-align: center;">Login</h1>
     <br>
     <br>
-    <form>
-        <div class="form-group container">
+    <form onsubmit="return check()" action="dashboard.html">
+        <div class="form-group container" >
             <label for="emailid">Username</label>
             <input type="text" class="form-control" id="emailid" aria-describedby="emailHelp">
         
             <label for="pass">Password</label>
             <input type="password" class="form-control" id="pass">
             <br>
-            <input type="button" class="btn btn-primary" onclick="check(this.form)" value="login">
+            <button type="submit" class="btn btn-primary form-button">Submit</button>
         </div>
     </form>
 
